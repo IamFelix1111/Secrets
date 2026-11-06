@@ -1,0 +1,46 @@
+# Deploys web/ to this repository's GitHub Pages:
+# https://iamfelix1111.github.io/Secrets/  (project pages, no site-repo push)
+name: Deploy static content to Pages
+
+on:
+  push:
+    branches: ["master"]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      # web/style.css is a symlink to a local path; replace it with the
+      # shared stylesheet from the site repository for the deployed copy.
+      - name: Resolve shared stylesheet
+        run: |
+          rm -f web/style.css
+          curl -fsSL -o web/style.css https://raw.githubusercontent.com/IamFelix1111/iamfelix1111.github.io/master/src/style.css
+
+      - name: Setup Pages
+        uses: actions/configure-pages@v5
+
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: 'web'
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v5

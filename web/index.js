@@ -74,8 +74,9 @@ window.SecretsVault = (() => {
     // as <tag>.001.enc, <tag>.002.enc, ... (built by tools/Secrets/encrypt.py).
     const resourceBase = key => safeTag(key.slice(0, 4) + key.slice(-2));
 
-    // Default resource location: /assets on this host. ?location=<url> in
-    // the query overrides it (carried by the location box's value).
+    // Default resource location: /assets on this host (assets are hosted
+    // separately — e.g. the Pages site's /assets directory).
+    // ?location=<url> in the query overrides it (carried by the box's value).
     function defaultLocation() {
         return location.protocol + '//' + location.host + '/assets';
     }
