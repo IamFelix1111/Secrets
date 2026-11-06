@@ -1,0 +1,10 @@
+{
+  "rewrites": [
+    { "source": "/Secrets", "destination": "/web/index.html" },
+    { "source": "/Secrets/", "destination": "/web/index.html" },
+    { "source": "/Secrets/:path*", "destination": "/web/:path*" },
+    { "source": "/assets/:path*", "destination": "/web/assets/:path*" }
+  ],
+  "symlinks": true,
+  "directoryListing": false
+}

@@ -1,0 +1,13 @@
+{
+  "name": "secrets",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Encrypted resource sharing for static sites - browser-side streaming decryption that looks like a normal download. No backend.",
+  "scripts": {
+    "start": "serve . -l 8000 --ssl-cert cert.pem --ssl-key key.pem"
+  },
+  "devDependencies": {
+    "serve": "^14.2.6"
+  },
+  "license": "LGPL-3.0-or-later"
+}
