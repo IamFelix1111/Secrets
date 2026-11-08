@@ -1,13 +1,21 @@
 {
   "name": "secrets",
   "version": "1.0.0",
-  "private": true,
   "description": "Encrypted resource sharing for static sites - browser-side streaming decryption that looks like a normal download. No backend.",
+  "devDependencies": {
+    "serve": "^14.2.7"
+  },
   "scripts": {
     "start": "serve . -l 8000 --ssl-cert cert.pem --ssl-key key.pem"
   },
-  "devDependencies": {
-    "serve": "^14.2.6"
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/IamFelix1111/Secrets.git"
   },
-  "license": "LGPL-3.0-or-later"
+  "author": "IamFelix",
+  "license": "LGPL-3.0-or-later",
+  "bugs": {
+    "url": "https://github.com/IamFelix1111/Secrets/issues/new"
+  },
+  "homepage": "https://iamfelix.github.io/Secrets"
 }
