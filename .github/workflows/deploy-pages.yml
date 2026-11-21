@@ -26,6 +26,13 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
+      # web/style.css is a symlink to a local path; replace it with the
+      # shared stylesheet from the site repository for the deployed copy.
+      - name: Resolve shared stylesheet
+        run: |
+          rm -f web/style.css
+          curl -fsSL -o web/style.css https://raw.githubusercontent.com/IamFelix1111/iamfelix1111.github.io/master/src/style.css
+
       - name: Setup Pages
         uses: actions/configure-pages@v5
 
